@@ -11,184 +11,216 @@ var buttonBar = document.getElementById("buttons")
 var formAdd = document.getElementById("theform")
 var sub = document.getElementById("submitform")
 var finalClick = document.getElementById("button-addon1")
-var secondsLeft = 100;
+var enterName = document.getElementById("userName")
+var secondsLeft = 50;
 
- sub.style.visibility = "hidden"
+sub.style.visibility = "hidden"
 
 startEl.addEventListener("click", function () {  //Start time and remove welcome banner
     setTime();
     startEl.style.display = "none"
-
 });
-
-
 function setTime() {
     var timerInterval = setInterval(function () {  //timer start
         secondsLeft--;
-        timeEl.textContent = "Time: " + secondsLeft;  
+        timeEl.textContent = "Time: " + secondsLeft;
 
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
-            sendMessage();
+            gameOver();
         }
-
     }, 1000);
 }
 
-
-startEl.addEventListener("click", function () {  //question 1
+function questionOne() {
     questEl.textContent = "Question 1"
     oneQ.textContent = "Answer 1"  //Correct Answer
     twoQ.textContent = "Answer 2"
     threeQ.textContent = "Answer 3"
     fourQ.textContent = "Answer 4"
 
-    oneQ.addEventListener("click",function(){
-      questiontwo()
+    function removeListenersOne() {
+        oneQ.removeEventListener("click", handleOneOne);
+        twoQ.removeEventListener("click", handleOneTwo);
+        threeQ.removeEventListener("click", handleOneThree);
+        fourQ.removeEventListener("click", handleOneFour);
+    }
 
-    } )
-    twoQ.addEventListener("click",function(){
-        secondsLeft=secondsLeft - 10
+    function handleOneOne() {
+        removeListenersOne();
         questiontwo()
-  
-      } )
-      threeQ.addEventListener("click",function(){
-        secondsLeft=secondsLeft - 10
+    }
+    function handleOneTwo() {
+        secondsLeft = secondsLeft - 10
+        removeListenersOne();
         questiontwo()
-  
-      } )
-      fourQ.addEventListener("click",function(){
-        secondsLeft=secondsLeft - 10
+    }
+    function handleOneThree() {
+        secondsLeft = secondsLeft - 10
+        removeListenersOne();
         questiontwo()
-  
-      } )
+    }
+    function handleOneFour() {
+        secondsLeft = secondsLeft - 10
+        removeListenersOne();
+        questiontwo()
+    }
 
 
+    oneQ.addEventListener("click", handleOneOne);
+    twoQ.addEventListener("click", handleOneTwo);
+    threeQ.addEventListener("click", handleOneThree);
+    fourQ.addEventListener("click", handleOneFour);
+}
 
-
-
-
-
-
-});
-
-
-
-function questiontwo(){
+function questiontwo() {
     questEl.textContent = "Question 2"
-    oneQ.textContent = "Answer one"  
-    twoQ.textContent = "Answer two"
-    threeQ.textContent = "Answer three"  //Correct Answer
-    fourQ.textContent = "Answer four"
+    oneQ.textContent = "Answer 1"
+    twoQ.textContent = "Answer 2"
+    threeQ.textContent = "Answer 3"//Correct Answer
+    fourQ.textContent = "Answer 4"
 
-    oneQ.addEventListener("click",function(){
-        secondsLeft=secondsLeft - 10
+    function removeListenersTwo() {
+        oneQ.removeEventListener("click", handleTwoOne);
+        twoQ.removeEventListener("click", handleTwoTwo);
+        threeQ.removeEventListener("click", handleTwoThree);
+        fourQ.removeEventListener("click", handleTwoFour);
+    }
+
+    function handleTwoOne() {
+        secondsLeft = secondsLeft - 10
+        removeListenersTwo();
         questionthree()
-  
-      } )
-      twoQ.addEventListener("click",function(){
-          
-          questionthree()
-    
-        } )
-        threeQ.addEventListener("click",function(){
-            secondsLeft=secondsLeft + 10
-          questionthree()
-    
-        } )
-        fourQ.addEventListener("click",function(){
-          
-          questionthree()
-    
-        } )
-  
-    
+    }
+    function handleTwoTwo() {
+        secondsLeft = secondsLeft - 10
+        removeListenersTwo();
+        questionthree()
+    }
+    function handleTwoThree() {
+        removeListenersTwo();
+        questionthree()
+    }
+    function handleTwoFour() {
+        secondsLeft = secondsLeft - 10
+        removeListenersTwo();
+        questionthree()
+    }
+
+    oneQ.addEventListener("click", handleTwoOne);
+    twoQ.addEventListener("click", handleTwoTwo);
+    threeQ.addEventListener("click", handleTwoThree);
+    fourQ.addEventListener("click", handleTwoFour);
 }
 
-function questionthree(){
-    questEl.textContent = "Question 3 blah blah"
-    oneQ.textContent = "Answer wan"  
-    twoQ.textContent = "Answer too"   //Correct Answer
-    threeQ.textContent = "Answer trey"  
-    fourQ.textContent = "Answer for"
+function questionthree() {
+    questEl.textContent = "Question 3"
+    oneQ.textContent = "Answer 1"
+    twoQ.textContent = "Answer 2"
+    threeQ.textContent = "Answer 3"
+    fourQ.textContent = "Answer 4"//Correct Answer
 
-    oneQ.addEventListener("click",function(){
-        secondsLeft=secondsLeft + 10
+    function removeListenersThree() {
+        oneQ.removeEventListener("click", handleThreeOne);
+        twoQ.removeEventListener("click", handleThreeTwo);
+        threeQ.removeEventListener("click", handleThreeThree);
+        fourQ.removeEventListener("click", handleThreeFour);
+    }
+
+    function handleThreeOne() {
+        secondsLeft = secondsLeft - 10
+        removeListenersThree();
         questionfour()
-  
-      } )
-      twoQ.addEventListener("click",function(){
-          secondsLeft=secondsLeft +10
-          
-          questionfour()
-    
-        } )
-        threeQ.addEventListener("click",function(){
-            secondsLeft=secondsLeft - 20
-          questionfour()
-    
-        } )
-        fourQ.addEventListener("click",function(){
-          
-          questionfour()
-    
-        } )
-    
+    }
+    function handleThreeTwo() {
+        secondsLeft = secondsLeft - 10
+        removeListenersThree();
+        questionfour()
+    }
+    function handleThreeThree() {
+        secondsLeft = secondsLeft - 10
+        removeListenersThree();
+        questionfour()
+    }
+    function handleThreeFour() {
+        removeListenersThree();
+        questionfour()
+    }
+
+    oneQ.addEventListener("click", handleThreeOne);
+    twoQ.addEventListener("click", handleThreeTwo);
+    threeQ.addEventListener("click", handleThreeThree);
+    fourQ.addEventListener("click", handleThreeFour);
 }
 
-function questionfour(){
-    questEl.textContent = "Question 4 blah blah"
-    oneQ.textContent = "Answer wand"  
-    twoQ.textContent = "Answer to"
-    threeQ.textContent = "Answer tres"  
-    fourQ.textContent = "Answer quatro" //Correct Answer
+function questionfour() {
+    questEl.textContent = "Question 3"
+    oneQ.textContent = "Answer 1"
+    twoQ.textContent = "Answer 2"  //Correct Answer
+    threeQ.textContent = "Answer 3"
+    fourQ.textContent = "Answer 4"
 
-    oneQ.addEventListener("click",function(){
-        secondsLeft=secondsLeft - 10
+    function removeListenersFour() {
+        oneQ.removeEventListener("click", handleFourOne);
+        twoQ.removeEventListener("click", handleFourTwo);
+        threeQ.removeEventListener("click", handleFourThree);
+        fourQ.removeEventListener("click", handleFourFour);
+    }
+
+    function handleFourOne() {
+        secondsLeft = secondsLeft - 10
+        removeListenersFour();
         gameOver()
-  
-      } )
-      twoQ.addEventListener("click",function(){
-        secondsLeft=secondsLeft - 30
-          gameOver()
-    
-        } )
-        threeQ.addEventListener("click",function(){
-            secondsLeft=secondsLeft + 30
-          gameOver()
-    
-        } )
-        fourQ.addEventListener("click",function(){
-            secondsLeft=secondsLeft + 10
-          gameOver()
-          
-    
-        } )
-    
+    }
+    function handleFourTwo() {
+        removeListenersFour();
+        gameOver()
+    }
+    function handleFourThree() {
+        secondsLeft = secondsLeft - 10
+        removeListenersFour();
+        gameOver()
+    }
+    function handleFourFour() {
+        secondsLeft = secondsLeft - 10
+        removeListenersFour();
+        gameOver()
+    }
+
+    oneQ.addEventListener("click", handleFourOne);
+    twoQ.addEventListener("click", handleFourTwo);
+    threeQ.addEventListener("click", handleFourThree);
+    fourQ.addEventListener("click", handleFourFour);
 }
 
-function gameOver(){
+function gameOver() {
     score = secondsLeft
-    questEl.textContent = "All Done"  
-    scoreReport.textContent = "Your Score is " + secondsLeft
+    questEl.textContent = "All Done"
+    scoreReport.textContent = "Your Score is " + score
     buttonBar.style.display = "none"
     timeEl.style.display = "none"
     sub.style.visibility = "visible"
     submitScore()
-    
-    
-
-    
-
 }
 
 
-function submitScore(){
+
+function submitScore(event) {
+    event.preventDefault
     console.log(score)
-    finalClick.addEventListener("click",function(){
-     window.location.assign("highscore.html")
+    console.log(enterName)
+    finalClick.addEventListener("click", function () {
+    
+        localStorage.setItem("score", JSON.stringify(score));
 
 
-
-    } )
+        // window.location.assign("results.html")
+    })
 }
+
+startEl.addEventListener("click", function () {  //question 1
+    questionOne();
+});
+
+
+
