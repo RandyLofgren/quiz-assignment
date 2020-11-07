@@ -119,7 +119,7 @@ function questionthree() {
     oneQ.textContent = "if i <> 5"
     twoQ.textContent = "if(i<>5)"
     threeQ.textContent = "if i =! 5 then"
-    fourQ.textContent = "if(i!=5)"//Correct Answer
+    fourQ.textContent = "if(i !=5)"//Correct Answer
 
     function removeListenersThree() {
         oneQ.removeEventListener("click", handleThreeOne);
@@ -213,9 +213,15 @@ function submitScore() {
     
 }
 finalClick.addEventListener("click", function() {
-    
     submitScore()
-    localStorage.setItem("score", JSON.stringify(userScores));
+
+    
+     current_scores = JSON.parse(localStorage.getItem("score"))
+
+ localStorage.setItem("score", JSON.stringify(userScores.concat(current_scores)));
+
+    
+    // localStorage.setItem("score", JSON.stringify(userScores));
     
 
 

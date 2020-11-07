@@ -19,5 +19,5 @@ redirect.addEventListener("click", function() {
 
   clearScores.addEventListener("click", function(){
 
-    storage.clear();
+    localStorage.clear();
   })
