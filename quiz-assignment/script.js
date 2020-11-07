@@ -214,14 +214,15 @@ function submitScore() {
 }
 finalClick.addEventListener("click", function() {
     submitScore()
+    if (localStorage.getItem("score") === null) {
+              localStorage.setItem("score", JSON.stringify(userScores));
+            }
+            else {
+              current_scores = JSON.parse(localStorage.getItem("score"))
+              localStorage.setItem("score", JSON.stringify(userScores.concat(current_scores)));
+            };
+        
 
-    
-     current_scores = JSON.parse(localStorage.getItem("score"))
-
- localStorage.setItem("score", JSON.stringify(userScores.concat(current_scores)));
-
-    
-    // localStorage.setItem("score", JSON.stringify(userScores));
     
 
 
