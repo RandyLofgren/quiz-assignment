@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +9,32 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Slabo+27px&display=swap">
 </head>
+
 <body>
-<div>
-    
-</div>
-<h1 class="text-center">High Scores</h1>
-    <ol class="text-center font-size-xl" id="list"></ol>
-    <h4><button type="button" class="btn btn-primary" id="paulo">Primary</button></h4>
+    <div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <h1 class="text-center">High Scores</h1>
+                <div class="row-fluid text-center">
+                    <ol class="text-center font-size-xl" id="list"></ol>
+                    <div class="row-fluid">
 
 
-    <script src="./results.js"></script>
+                        <div class="btn-toolbar mb-5" id="buttons" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2 btn-lg" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-primary btn-lg" id="restart">Redo The Quiz</button>
+                                <br>
+                                <button type="button" class="btn btn-primary btn-lg" id="clear">Clear Scores</button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="./results.js"></script>
 </body>
+
 </html>

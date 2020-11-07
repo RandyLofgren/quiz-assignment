@@ -1,5 +1,6 @@
 var records = JSON.parse(localStorage.getItem("score"));
-var redirect = document.getElementById("paulo")
+var redirect = document.getElementById("restart")
+var clearScores = document.getElementById("clear")
 
 
 for(i=0;i<records.length; i++){
@@ -16,4 +17,7 @@ redirect.addEventListener("click", function() {
     window.location.assign("index.html")
 })
 
-  
+  clearScores.addEventListener("click", function(){
+
+    storage.clear();
+  })
