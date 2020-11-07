@@ -13,6 +13,7 @@ var sub = document.getElementById("submitform")
 var finalClick = document.getElementById("button-addon1")
 var enterName = document.getElementById("userName")
 var secondsLeft = 50;
+var userScores = []
 
 sub.style.visibility = "hidden"
 
@@ -154,7 +155,7 @@ function questionthree() {
 }
 
 function questionfour() {
-    questEl.textContent = "Question 3"
+    questEl.textContent = "Question 4"
     oneQ.textContent = "Answer 1"
     twoQ.textContent = "Answer 2"  //Correct Answer
     threeQ.textContent = "Answer 3"
@@ -200,27 +201,36 @@ function gameOver() {
     buttonBar.style.display = "none"
     timeEl.style.display = "none"
     sub.style.visibility = "visible"
-    submitScore()
+    // submitScore()
 }
 
 
 
-function submitScore(event) {
-    event.preventDefault
-    console.log(score)
-    console.log(enterName)
-    finalClick.addEventListener("click", function () {
+function submitScore() {
+    pushToArray()
+
     
-        localStorage.setItem("score", JSON.stringify(score));
-
-
-        // window.location.assign("results.html")
-    })
+    
 }
+finalClick.addEventListener("click", function() {
+    
+    submitScore()
+    localStorage.setItem("score", JSON.stringify(userScores));
+    
+
+
+    window.location.assign("results.html")
+})
 
 startEl.addEventListener("click", function () {  //question 1
     questionOne();
 });
 
+function pushToArray() {
+    userScores.push({"name": enterName.value, "score": score});
+    console.log(userScores)
+    return userScores;
+    
+}
 
 
